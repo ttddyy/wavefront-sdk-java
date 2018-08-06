@@ -1,4 +1,4 @@
-package com.wavefront.sdk.proxy;
+package com.wavefront.sdk.reporter.proxy;
 
 import com.wavefront.sdk.common.ConnectionHandler;
 import com.wavefront.sdk.common.ReconnectingSocket;

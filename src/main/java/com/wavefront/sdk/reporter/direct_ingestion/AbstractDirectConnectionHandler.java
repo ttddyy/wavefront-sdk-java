@@ -1,4 +1,4 @@
-package com.wavefront.sdk.direct_ingestion;
+package com.wavefront.sdk.reporter.direct_ingestion;
 
 import com.wavefront.sdk.common.ConnectionHandler;
 import com.wavefront.sdk.common.NamedThreadFactory;

@@ -1,12 +1,10 @@
-package com.wavefront.sdk.proxy;
+package com.wavefront.sdk.reporter.proxy;
 
 import com.wavefront.sdk.common.ConnectionHandler;
 import com.wavefront.sdk.common.Pair;
 import com.wavefront.sdk.entities.histograms.HistogramGranularity;
-import com.wavefront.sdk.entities.histograms.WavefrontHistogramSender;
-import com.wavefront.sdk.entities.metrics.WavefrontMetricSender;
 import com.wavefront.sdk.entities.tracing.SpanLog;
-import com.wavefront.sdk.entities.tracing.WavefrontTracingSpanSender;
+import com.wavefront.sdk.reporter.WavefrontReporter;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -30,8 +28,7 @@ import static com.wavefront.sdk.common.Utils.tracingSpanToLineData;
  *
  * @author Sushant Dewan (sushant@wavefront.com).
  */
-public class WavefrontProxyClient implements WavefrontMetricSender, WavefrontHistogramSender,
-    WavefrontTracingSpanSender, ConnectionHandler {
+public class WavefrontProxyClient implements WavefrontReporter, ConnectionHandler {
 
   @Nullable
   private final ProxyConnectionHandler metricsProxyConnectionHandler;
@@ -177,6 +174,12 @@ public class WavefrontProxyClient implements WavefrontMetricSender, WavefrontHis
       tracingProxyConnectionHandler.incrementFailureCount();
       throw e;
     }
+  }
+
+  @Override
+  public void sendEvent(String name, long startMillis, long endMillis, @Nullable String source,
+                        @Nullable Map<String, String> tags) throws IOException {
+    // TODO
   }
 
   @Override

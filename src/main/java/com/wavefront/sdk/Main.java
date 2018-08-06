@@ -5,9 +5,9 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 
 import com.wavefront.sdk.common.Pair;
-import com.wavefront.sdk.direct_ingestion.WavefrontDirectIngestionClient;
 import com.wavefront.sdk.entities.histograms.HistogramGranularity;
-import com.wavefront.sdk.proxy.WavefrontProxyClient;
+import com.wavefront.sdk.reporter.direct_ingestion.WavefrontDirectIngestionClient;
+import com.wavefront.sdk.reporter.proxy.WavefrontProxyClient;
 
 import java.io.IOException;
 import java.util.UUID;

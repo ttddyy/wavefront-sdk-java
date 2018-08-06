@@ -1,13 +1,11 @@
-package com.wavefront.sdk.direct_ingestion;
+package com.wavefront.sdk.reporter.direct_ingestion;
 
 
 import com.wavefront.sdk.common.Constants;
 import com.wavefront.sdk.common.Pair;
 import com.wavefront.sdk.entities.histograms.HistogramGranularity;
-import com.wavefront.sdk.entities.histograms.WavefrontHistogramSender;
-import com.wavefront.sdk.entities.metrics.WavefrontMetricSender;
 import com.wavefront.sdk.entities.tracing.SpanLog;
-import com.wavefront.sdk.entities.tracing.WavefrontTracingSpanSender;
+import com.wavefront.sdk.reporter.WavefrontReporter;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -36,7 +34,7 @@ import static com.wavefront.sdk.common.Utils.tracingSpanToLineData;
  * @author Vikram Raman (vikram@wavefront.com)
  */
 public class WavefrontDirectIngestionClient extends AbstractDirectConnectionHandler
-    implements WavefrontMetricSender, WavefrontHistogramSender, WavefrontTracingSpanSender {
+    implements WavefrontReporter {
 
   private static final String DEFAULT_SOURCE = "wavefrontDirectSender";
   private static final Logger LOGGER = Logger.getLogger(
@@ -97,6 +95,12 @@ public class WavefrontDirectIngestionClient extends AbstractDirectConnectionHand
     if (!tracingSpansBuffer.offer(span)) {
       LOGGER.log(Level.FINE, "Buffer full, dropping span: " + span);
     }
+  }
+
+  @Override
+  public void sendEvent(String name, long startMillis, long endMillis, @Nullable String source,
+                        @Nullable Map<String, String> tags) throws IOException {
+    // TODO
   }
 
   @Override

@@ -6,7 +6,7 @@ import com.google.common.collect.ImmutableSet;
 
 import com.wavefront.sdk.common.Pair;
 import com.wavefront.sdk.entities.histograms.HistogramGranularity;
-import com.wavefront.sdk.proxy.WavefrontProxyClient;
+import com.wavefront.sdk.reporter.proxy.WavefrontProxyClient;
 
 import org.junit.Test;
 
