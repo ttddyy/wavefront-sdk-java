@@ -89,8 +89,30 @@
                               <pattern>org.apache.http</pattern>
                               <shadedPattern>com.wavefront.java-sdk.org.apache.http</shadedPattern>
                             </relocation>
+                            <relocation>
+                              <pattern>org.glassfish</pattern>
+                              <shadedPattern>com.wavefront.java-sdk.org.glassfish</shadedPattern>
+                            </relocation>
                         </relocations>
                         <filters>
+                            <filter>
+                                <artifact>org.jboss.resteasy:resteasy-jaxrs</artifact>
+                                <includes>
+                                    <include>**</include>
+                                </includes>
+                            </filter>
+            			    <filter>
+            			        <artifact>org.glassfish.jersey.core:jersey-common</artifact>
+                				<includes>
+                				    <include>**</include>
+                				</includes>
+            			    </filter>
+                            <filter>
+                                <artifact>javax.ws.rs:javax.ws.rs-api</artifact>
+                                <includes>
+                                    <include>**</include>
+                                </includes>
+                            </filter>
                             <filter>
                                 <artifact>*:*</artifact>
                                 <excludes>
@@ -118,6 +140,16 @@
     </build>
     
     <dependencies>
+    	<dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-common</artifactId>
+    	    <version>2.27</version>
+    	</dependency>
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+            <version>2.1.1</version>
+        </dependency>
         <dependency>
             <groupId>com.google.code.findbugs</groupId>
             <artifactId>jsr305</artifactId>
